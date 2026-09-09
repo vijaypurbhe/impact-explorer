@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 export const stages = [
   { id: 1, title: "Understand", sub: "Analyze change & context" },
-  { id: 2, title: "AI Analyze & Recommend", sub: "Find impacts & suggest actions" },
+  { id: 2, title: "Analyze & Recommend", sub: "Find impacts & suggest actions" },
   { id: 3, title: "Enable", sub: "Review, test & release" },
 ];
 

@@ -5,16 +5,16 @@ import { ChangeEventPanel } from "@/components/impact/ChangeEventPanel";
 import { DependencyGraph } from "@/components/impact/DependencyGraph";
 import { FileDetailSheet } from "@/components/impact/FileDetailSheet";
 import { ImpactedFilesTable } from "@/components/impact/ImpactedFilesTable";
-import { OutcomeBanner } from "@/components/impact/Rails";
+
 import { Panel } from "@/components/impact/shared";
 import { WorkflowStages } from "@/components/impact/WorkflowStages";
 import { Workbench } from "@/components/impact/Workbench";
 import type { ImpactedFile } from "@/data/impactScenarios";
 import { scenarios } from "@/data/impactScenarios";
 
-const TITLE = "AI-Assisted Code Impact Analysis | Forged Fiber 37";
+const TITLE = "Codeo — Impact Analysis Tool";
 const DESCRIPTION =
-  "When one Apex class changes, see the dependent components, ranked risk, and the follow-on updates needed across the Salesforce codebase.";
+  "Select a change to see dependent components, ranked risk, and recommended follow-on updates across the codebase.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -81,21 +81,17 @@ function Index() {
     <main className="min-h-screen bg-background">
       <div className="mx-auto max-w-[1600px] px-4 py-8 sm:px-6 lg:px-8">
         <header className="mb-6">
-          <p className="flex items-center gap-3 text-[0.7rem] font-bold tracking-[0.2em] text-navy-soft uppercase">
-            <span className="h-0.5 w-8 rounded-full bg-teal" />
-            AI to accelerate. People to deliver.
-          </p>
-          <h1 className="mt-3 text-3xl font-bold tracking-tight text-navy sm:text-4xl">
-            Development — AI-Assisted Code Impact Analysis
+          <h1 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+            Codeo — Impact Analysis Tool
           </h1>
           <p className="mt-2 max-w-4xl text-base text-navy-soft sm:text-lg">
-            When one class changes, AI identifies dependent components and recommends the follow-on
-            updates needed across the codebase.
+            Select a change to see dependent components, ranked risk, and recommended follow-on
+            updates across the codebase.
           </p>
         </header>
 
         <div className="grid gap-5">
-          <Panel eyebrow="AI impact analysis workflow">
+          <Panel eyebrow="Impact analysis workflow">
             <WorkflowStages current={stage} />
             <div className="mt-5">
               <ChangeEventPanel
@@ -149,10 +145,6 @@ function Index() {
               </Panel>
             )}
           </div>
-        </div>
-
-        <div className="mt-5">
-          <OutcomeBanner />
         </div>
       </div>
 
