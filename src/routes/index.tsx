@@ -5,7 +5,7 @@ import { ChangeEventPanel } from "@/components/impact/ChangeEventPanel";
 import { DependencyGraph } from "@/components/impact/DependencyGraph";
 import { FileDetailSheet } from "@/components/impact/FileDetailSheet";
 import { ImpactedFilesTable } from "@/components/impact/ImpactedFilesTable";
-import { ChallengeRail, IntegrationsStrip, OutcomeBanner, ValueRail } from "@/components/impact/Rails";
+import { OutcomeBanner } from "@/components/impact/Rails";
 import { Panel } from "@/components/impact/shared";
 import { WorkflowStages } from "@/components/impact/WorkflowStages";
 import { Workbench } from "@/components/impact/Workbench";
@@ -94,72 +94,60 @@ function Index() {
           </p>
         </header>
 
-        <div className="grid gap-5 xl:grid-cols-[16rem_minmax(0,1fr)_18rem]">
-          <div className="order-2 xl:order-1">
-            <ChallengeRail />
-          </div>
+        <div className="grid gap-5">
+          <Panel eyebrow="AI impact analysis workflow">
+            <WorkflowStages current={stage} />
+            <div className="mt-5">
+              <ChangeEventPanel
+                scenario={scenario}
+                onSelect={selectScenario}
+                onRun={run}
+                onReset={reset}
+                status={status}
+              />
+            </div>
+          </Panel>
 
-          <div className="order-1 space-y-5 xl:order-2">
-            <Panel eyebrow="AI impact analysis workflow">
-              <WorkflowStages current={stage} />
-              <div className="mt-5">
-                <ChangeEventPanel
-                  scenario={scenario}
-                  onSelect={selectScenario}
-                  onRun={run}
-                  onReset={reset}
-                  status={status}
-                />
-              </div>
-            </Panel>
-
-            <div ref={resultsRef}>
-              {status === "done" ? (
-                <div className="space-y-5">
-                  <div className="grid gap-5 2xl:grid-cols-2">
-                    <Panel eyebrow="Dependency visualization">
-                      <DependencyGraph
-                        scenario={scenario}
-                        activeId={activeId}
-                        onHover={setActiveId}
-                        onSelect={(id) => {
-                          const file = scenario.files.find((f) => f.id === id);
-                          if (file) setOpenFile(file);
-                        }}
-                      />
-                    </Panel>
-                    <Panel eyebrow="Impacted files (ranked by risk)">
-                      <ImpactedFilesTable
-                        scenario={scenario}
-                        activeId={activeId}
-                        sortByRisk={sortByRisk}
-                        onToggleSort={() => setSortByRisk((v) => !v)}
-                        onHover={setActiveId}
-                        onSelect={setOpenFile}
-                      />
-                    </Panel>
-                  </div>
-
-                  <Panel eyebrow="Developer workbench">
-                    <Workbench key={scenario.id} scenario={scenario} />
+          <div ref={resultsRef}>
+            {status === "done" ? (
+              <div className="space-y-5">
+                <div className="grid gap-5 2xl:grid-cols-2">
+                  <Panel eyebrow="Dependency visualization">
+                    <DependencyGraph
+                      scenario={scenario}
+                      activeId={activeId}
+                      onHover={setActiveId}
+                      onSelect={(id) => {
+                        const file = scenario.files.find((f) => f.id === id);
+                        if (file) setOpenFile(file);
+                      }}
+                    />
+                  </Panel>
+                  <Panel eyebrow="Impacted files (ranked by risk)">
+                    <ImpactedFilesTable
+                      scenario={scenario}
+                      activeId={activeId}
+                      sortByRisk={sortByRisk}
+                      onToggleSort={() => setSortByRisk((v) => !v)}
+                      onHover={setActiveId}
+                      onSelect={setOpenFile}
+                    />
                   </Panel>
                 </div>
-              ) : (
-                <Panel eyebrow="Analysis results">
-                  <p className="py-10 text-center text-sm text-muted-foreground">
-                    {status === "running"
-                      ? "Scanning source code, metadata and the dependency graph…"
-                      : "Run the analysis to see impacted components, risk ranking and recommended updates."}
-                  </p>
+
+                <Panel eyebrow="Developer workbench">
+                  <Workbench key={scenario.id} scenario={scenario} />
                 </Panel>
-              )}
-            </div>
-
-            <IntegrationsStrip />
-          </div>
-
-          <div className="order-3">
-            <ValueRail />
+              </div>
+            ) : (
+              <Panel eyebrow="Analysis results">
+                <p className="py-10 text-center text-sm text-muted-foreground">
+                  {status === "running"
+                    ? "Scanning source code, metadata and the dependency graph…"
+                    : "Run the analysis to see impacted components, risk ranking and recommended updates."}
+                </p>
+              </Panel>
+            )}
           </div>
         </div>
 
