@@ -75,9 +75,9 @@ export const scenarios: Scenario[] = [
     nodes: [
       { id: "order-controller", name: "OrderController", risk: "high", x: 22, y: 14 },
       { id: "payment-service", name: "PaymentService", risk: "medium", x: 79, y: 16 },
-      { id: "order-trigger", name: "OrderTrigger", risk: "medium", x: 13, y: 55 },
+      { id: "order-trigger", name: "OrderTrigger", risk: "high", x: 13, y: 55 },
       { id: "order-summary", name: "OrderSummary", risk: "low", x: 86, y: 55 },
-      { id: "order-test", name: "OrderTest", risk: "high", x: 27, y: 88 },
+      { id: "order-test", name: "OrderTest", risk: "medium", x: 27, y: 88 },
       { id: "order-page", name: "OrderPage", risk: "low", x: 74, y: 89 },
     ],
     files: [
@@ -341,7 +341,7 @@ export const scenarios: Scenario[] = [
       { id: "account-handler", name: "AccountTriggerHandler", risk: "high", x: 50, y: 12 },
       { id: "territory-service", name: "TerritoryService", risk: "medium", x: 15, y: 42 },
       { id: "account-dedupe", name: "AccountDedupe", risk: "medium", x: 85, y: 42 },
-      { id: "account-trigger-test", name: "AccountTriggerTest", risk: "high", x: 22, y: 85 },
+      { id: "account-trigger-test", name: "AccountTriggerTest", risk: "medium", x: 22, y: 85 },
       { id: "account-page", name: "AccountRecordPage", risk: "low", x: 78, y: 85 },
     ],
     files: [
