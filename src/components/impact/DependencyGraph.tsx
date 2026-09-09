@@ -24,7 +24,7 @@ export function DependencyGraph({ scenario, activeId, onHover, onSelect }: Props
         ))}
       </ul>
 
-      <div className="relative aspect-[16/10] min-h-[22rem] w-full overflow-hidden">
+      <div className="relative aspect-[16/10] max-h-[26rem] min-h-[22rem] w-full overflow-hidden">
         <svg className="pointer-events-none absolute inset-0 size-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           {scenario.nodes.map((n: GraphNode) => (
             <line
@@ -34,10 +34,10 @@ export function DependencyGraph({ scenario, activeId, onHover, onSelect }: Props
               x2={n.x}
               y2={n.y}
               stroke="currentColor"
-              strokeWidth={activeId === n.id ? 0.7 : 0.35}
+              strokeWidth={activeId === n.id ? 2.5 : 1.25}
               className={cn(
                 "transition-all",
-                activeId === n.id ? "text-teal" : "text-border",
+                activeId === n.id ? "text-teal" : "text-navy/20",
               )}
               vectorEffect="non-scaling-stroke"
             />
