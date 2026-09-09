@@ -24,8 +24,8 @@ export function DependencyGraph({ scenario, activeId, onHover, onSelect }: Props
         ))}
       </ul>
 
-      <div className="relative aspect-[16/10] w-full min-h-[20rem]">
-        <svg className="absolute inset-0 size-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <div className="relative aspect-[16/10] min-h-[22rem] w-full overflow-hidden">
+        <svg className="pointer-events-none absolute inset-0 size-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           {scenario.nodes.map((n: GraphNode) => (
             <line
               key={n.id}

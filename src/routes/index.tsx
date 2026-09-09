@@ -116,7 +116,7 @@ function Index() {
             <div ref={resultsRef}>
               {status === "done" ? (
                 <div className="space-y-5">
-                  <div className="grid gap-5 xl:grid-cols-2">
+                  <div className="grid gap-5 2xl:grid-cols-2">
                     <Panel eyebrow="Dependency visualization">
                       <DependencyGraph
                         scenario={scenario}
