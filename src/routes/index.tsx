@@ -91,7 +91,7 @@ function Index() {
         </header>
 
         <div className="grid gap-5">
-          <Panel eyebrow="AI impact analysis workflow">
+          <Panel eyebrow="Impact analysis workflow">
             <WorkflowStages current={stage} />
             <div className="mt-5">
               <ChangeEventPanel
